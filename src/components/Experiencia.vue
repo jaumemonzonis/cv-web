@@ -1,6 +1,6 @@
 <template>
-     <div id="sobremi">
- SOBREMI
+     <div id="experiencia">
+EXPERIENCIA
     </div>
 </template>
 
@@ -11,7 +11,7 @@
 </script>
 
 <style lang="scss" scoped>
-#sobremi {
+#experiencia {
     height: 100vh;
 }
 </style>

@@ -3,6 +3,7 @@
     <Navbar></Navbar>
     <Home></Home>
     <About></About>
+    <Experiencia></Experiencia>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
+import Experiencia from "./components/Experiencia";
 
 
 export default {
@@ -17,6 +19,7 @@ export default {
     Home,
     Navbar,
     About,
+    Experiencia,
   }
 };
 </script>

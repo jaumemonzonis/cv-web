@@ -3,12 +3,13 @@
     <b-navbar-toggle target="nav-collapse" class="custom-toggler"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class>
-        <b-nav-item href="#" class="item">SOBRE MI</b-nav-item>
-        <b-nav-item href="#" class="item">EXPERIENCIA</b-nav-item>
-        <b-nav-item href="#" class="item">EDUCACIÓN</b-nav-item>
-        <b-nav-item href="#" class="item">HABILIDADES</b-nav-item>
-        <b-nav-item href="#" class="item">IDIOMAS</b-nav-item>
-        <b-nav-item href="#" class="item">CONTACTO</b-nav-item>
+        <b-nav-item href="/#inicio" class="item" @click="animation">INICIO</b-nav-item>
+        <b-nav-item href="/#sobremi" class="item" @click="animation">SOBRE MI</b-nav-item>
+        <b-nav-item href="/#experiencia" class="item" @click="animation">EXPERIENCIA</b-nav-item>
+        <b-nav-item href="#" class="item" @click="animation">EDUCACIÓN</b-nav-item>
+        <b-nav-item href="#" class="item" @click="animation">HABILIDADES</b-nav-item>
+        <b-nav-item href="#" class="item" @click="animation">IDIOMAS</b-nav-item>
+        <b-nav-item href="#" class="item" @click="animation">CONTACTO</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -38,16 +39,31 @@ export default {
       var obj_top = obj.scrollTop(); //scroll vertical inicial del objeto
       obj.scroll(function() {
         var obj_act_top = $(this).scrollTop(); //obtener scroll top instantaneo
+
         if (obj_act_top > obj_top) {
           if (obj_act_top >= home.height()) {
-            item.fadeIn("slow", function() {
-              $(this).addClass("item-black");
-            });
-          }
-        } else {
-          item.removeClass("item-black");
+            item.addClass("item-black");
+          }  
+          } if (obj_act_top < obj_top) { 
+            if (obj_top < home.height()) {
+              item.removeClass("item-black");
+            }
         }
+    
         obj_top = obj_act_top; //almacenar scroll top anterior
+      });
+    },
+    animation() {
+      $('a[href^="#"]').click(function() {
+        var destino = $(this.hash);
+        if (destino.length == 0) {
+          destino = $('a[name="' + this.hash.substr(1) + '"]');
+        }
+        if (destino.length == 0) {
+          destino = $("html");
+        }
+        $("html, body").animate({ scrollTop: destino.offset().top }, 200);
+        return false;
       });
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" id="#inicio">
     <b-container>
       <b-row>
         <b-col>1 of 3</b-col>

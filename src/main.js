@@ -16,7 +16,11 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 
 const router = new VueRouter({
-  routes
+  mode: 'history',
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 });
 
 new Vue({
