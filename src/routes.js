@@ -1,4 +1,4 @@
-import home from '@/components/Home'
+import home from './components/Home'
 
 export const routes = [
     {path: '/', component: home},
