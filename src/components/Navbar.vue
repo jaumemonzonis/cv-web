@@ -3,26 +3,24 @@
     <b-navbar-toggle target="nav-collapse" class="custom-toggler"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class>
-        <b-nav-item href="#" class="item" :class="{'item-black':! showBlack}">SOBRE MI</b-nav-item>
-        <b-nav-item href="#" class="item" :class="{'item-black':! showBlack}">EXPERIENCIA</b-nav-item>
-        <b-nav-item href="#" class="item" :class="{'item-black':! showBlack}">EDUCACIÓN</b-nav-item>
-        <b-nav-item href="#" class="item" :class="{'item-black':! showBlack}">HABILIDADES</b-nav-item>
-        <b-nav-item href="#" class="item" :class="{'item-black':! showBlack}">IDIOMAS</b-nav-item>
-        <b-nav-item href="#" class="item" :class="{'item-black':! showBlack}">CONTACTO</b-nav-item>
+        <b-nav-item href="#" class="item">SOBRE MI</b-nav-item>
+        <b-nav-item href="#" class="item">EXPERIENCIA</b-nav-item>
+        <b-nav-item href="#" class="item">EDUCACIÓN</b-nav-item>
+        <b-nav-item href="#" class="item">HABILIDADES</b-nav-item>
+        <b-nav-item href="#" class="item">IDIOMAS</b-nav-item>
+        <b-nav-item href="#" class="item">CONTACTO</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
 
 <script>
-import $ from 'jquery';
+import $ from "jquery";
 export default {
   data() {
-      var home = ('.home');
-      console.log(home.clientHeight);
     return {
       showBlack: true,
-      lastScrollPosition: 0,
+      lastScrollPosition: 0
     };
   },
   mounted() {
@@ -33,23 +31,24 @@ export default {
   },
   methods: {
     onScroll() {
-      
-      var home =  $('.home');
-      console.log(home.height());
-      const currentScrollPosition =
-        window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScrollPosition < 0) {
-        return;
-      }
-      // Stop executing this function if the difference between
-      // current scroll position and last scroll position is less than some offset
-      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < home.height()) {
-        return;
-      }
-    
-
-      this.showBlack = currentScrollPosition < this.lastScrollPosition;
-      this.lastScrollPosition = currentScrollPosition;
+      var home = $(".home");
+      var item = $(".item");
+      //detectar scroll hacia abajo
+      var obj = $(window); //objeto sobre el que quiero detectar scroll
+      var obj_top = obj.scrollTop(); //scroll vertical inicial del objeto
+      obj.scroll(function() {
+        var obj_act_top = $(this).scrollTop(); //obtener scroll top instantaneo
+        if (obj_act_top > obj_top) {
+          if (obj_act_top >= home.height()) {
+            item.fadeIn("slow", function() {
+              $(this).addClass("item-black");
+            });
+          }
+        } else {
+          item.removeClass("item-black");
+        }
+        obj_top = obj_act_top; //almacenar scroll top anterior
+      });
     }
   }
 };
@@ -110,7 +109,7 @@ export default {
   }
 
   .navbar-nav .item.item-black a {
-    color: red;
+    color: black;
   }
 }
 </style>
