@@ -3,7 +3,9 @@
     <b-container>
       <b-row align-v="center" align-h="center">
         <b-col cols="6" class="blockimage">
-          <img src="../assets/logo.png" class="blockimage__img" alt="Foto_JaumeMonzonisLazaro" />
+          <div class="blockimage__img">
+            <img src="../assets/logo.png" />
+          </div>
         </b-col>
         <b-col cols="6" class="blockpresentation">
           <h1 class="blockpresentation__name">JAUME MONZONIS LÁZARO</h1>
@@ -24,9 +26,9 @@ export default {
       typeValue: "",
       typeStatus: false,
       typeArray: ["Desarrollador Front-End", "Javascript", "Vue", "Wordpress"],
-      typingSpeed: 200,
-      erasingSpeed: 100,
-      newTextDelay: 2000,
+      typingSpeed: 100,
+      erasingSpeed: 50,
+      newTextDelay: 1000,
       typeArrayIndex: 0,
       charIndex: 0
     };
@@ -100,22 +102,89 @@ export default {
           font-size: 28px;
         }
         .blockpresentation__cursor {
-      display: inline-block;
-      margin-left: 3px;
-      width: 4px;
-      background-color: #fff;
-      animation: cursorBlink 1s infinite;
-    &.typing {
-      animation: none;
-    }
+          display: inline-block;
+          margin-left: 3px;
+          width: 4px;
+          background-color: #fff;
+          animation: cursorBlink 1s infinite;
+          &.typing {
+            animation: none;
+          }
+        }
+      }
+      .blockimage {
+        .blockimage__img:hover {
+          $url: url("../assets/logo.png");
+          $offset: 5px;
+
+          background-image: $url;
+          background-size: cover;
+          background-position: center;
+
+          @supports (mix-blend-mode: multiply) {
+            position: relative;
+            overflow: hidden;
+            background-color: magenta;
+            background-blend-mode: screen;
+
+            &:before,
+            &:after {
+              display: block;
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: inherit;
+              mix-blend-mode: multiply;
+              transform: scale(1);
+
+              animation: moving 2s steps(20, end) infinite;
+            }
+
+            &:before {
+              background-color: yellow;
+              background-blend-mode: screen;
+              transform-origin: top left;
+            }
+
+            &:after {
+              background-color: cyan;
+              background-blend-mode: screen;
+              transform-origin: bottom right;
+            }
+          }
+        }
       }
     }
   }
 }
+  @keyframes moving {
+    @for $i from 1 through 20 {
+      #{$i*5}% {
+        transform: scale(1 - (random(8)-4)/100)
+          translate((random(20) - 10) * 1px, (random(20) - 10) * 1px);
+      }
+    }
+  }
+
+  [class$="-effect"] img {
+    vertical-align: top !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+  }
 
   @keyframes cursorBlink {
-    49% { background-color: #fff; }
-    50% { background-color: transparent; }
-    99% { background-color: transparent; }
-  }}
+    49% {
+      background-color: #fff;
+    }
+    50% {
+      background-color: transparent;
+    }
+    99% {
+      background-color: transparent;
+    }
+  }
+
 </style>
