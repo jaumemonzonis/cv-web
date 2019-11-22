@@ -4,11 +4,12 @@
       <b-row align-v="center" align-h="center">
         <b-col cols="6" class="blockimage">
           <div class="blockimage__img">
-            <img src="../assets/logo.png" />
+            <img src="../assets/jaume_monzonis9.png" />
           </div>
         </b-col>
         <b-col cols="6" class="blockpresentation">
-          <h1 class="blockpresentation__name">JAUME MONZONIS LÁZARO</h1>
+          <h1 class="blockpresentation__name glitch" data-text="
+JAUME MONZONIS LÁZARO">JAUME MONZONIS LÁZARO</h1>
           <h1>
             <span class="blockpresentation__job">{{ typeValue }}</span>
             <span class="blockpresentation__cursor" :class="{'typing': typeStatus}">&nbsp;</span>
@@ -113,78 +114,91 @@ export default {
         }
       }
       .blockimage {
-        .blockimage__img:hover {
-          $url: url("../assets/logo.png");
-          $offset: 5px;
+        .blockimage__img {
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          &:hover {
+            $url: url("../assets/jaume_monzonis9.png");
+            $offset: 5px;
 
-          background-image: $url;
-          background-size: cover;
-          background-position: center;
+            background-image: $url;
+            background-size: cover;
+            background-position: center;
 
-          @supports (mix-blend-mode: multiply) {
-            position: relative;
-            overflow: hidden;
-            background-color: magenta;
-            background-blend-mode: screen;
-
-            &:before,
-            &:after {
-              display: block;
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              background: inherit;
-              mix-blend-mode: multiply;
-              transform: scale(1);
-
-              animation: moving 2s steps(20, end) infinite;
-            }
-
-            &:before {
-              background-color: yellow;
+            @supports (mix-blend-mode: multiply) {
+              position: relative;
+              overflow: hidden;
+              background-color: magenta;
               background-blend-mode: screen;
-              transform-origin: top left;
-            }
 
-            &:after {
-              background-color: cyan;
-              background-blend-mode: screen;
-              transform-origin: bottom right;
+              &:before,
+              &:after {
+                display: block;
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: inherit;
+                mix-blend-mode: multiply;
+                transform: scale(1);
+
+                animation: moving 2s steps(20, end) infinite;
+              }
+
+              &:before {
+                background-color: yellow;
+                background-blend-mode: screen;
+                transform-origin: top left;
+              }
+
+              &:after {
+                background-color: cyan;
+                background-blend-mode: screen;
+                transform-origin: bottom right;
+              }
             }
+          }
+          img {
+             border: solid 3px #dfdfdf;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
+          -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
           }
         }
       }
     }
   }
 }
-  @keyframes moving {
-    @for $i from 1 through 20 {
-      #{$i*5}% {
-        transform: scale(1 - (random(8)-4)/100)
-          translate((random(20) - 10) * 1px, (random(20) - 10) * 1px);
-      }
+@keyframes moving {
+  @for $i from 1 through 20 {
+    #{$i*5}% {
+      transform: scale(1 - (random(8)-4)/100)
+        translate((random(20) - 10) * 1px, (random(20) - 10) * 1px);
     }
   }
+}
 
-  [class$="-effect"] img {
-    vertical-align: top !important;
-    margin: 0 !important;
-    opacity: 0 !important;
+[class$="-effect"] img {
+  vertical-align: top !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+}
+
+@keyframes cursorBlink {
+  49% {
+    background-color: #fff;
   }
-
-  @keyframes cursorBlink {
-    49% {
-      background-color: #fff;
-    }
-    50% {
-      background-color: transparent;
-    }
-    99% {
-      background-color: transparent;
-    }
+  50% {
+    background-color: transparent;
   }
-
+  99% {
+    background-color: transparent;
+  }
+}
 </style>

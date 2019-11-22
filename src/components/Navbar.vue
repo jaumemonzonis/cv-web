@@ -3,13 +3,20 @@
     <b-navbar-toggle target="nav-collapse" class="custom-toggler"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class>
-        <b-nav-item href="/#inicio" class="item" @click="animation">INICIO</b-nav-item>
-        <b-nav-item href="/#sobremi" class="item" @click="animation">SOBRE MI</b-nav-item>
-        <b-nav-item href="/#experiencia" class="item" @click="animation">EXPERIENCIA</b-nav-item>
-        <b-nav-item href="#" class="item" @click="animation">EDUCACIÓN</b-nav-item>
-        <b-nav-item href="#" class="item" @click="animation">HABILIDADES</b-nav-item>
-        <b-nav-item href="#" class="item" @click="animation">IDIOMAS</b-nav-item>
-        <b-nav-item href="#" class="item" @click="animation">CONTACTO</b-nav-item>
+        <b-nav-item href="/#inicio" class="item glitch" @click="animation" data-text="
+INICIO">INICIO</b-nav-item>
+        <b-nav-item href="/#sobremi" class="item glitch" @click="animation" data-text="
+SOBRE MI">SOBRE MI</b-nav-item>
+        <b-nav-item href="/#experiencia" class="item glitch" @click="animation" data-text="
+EXPERIENCIA">EXPERIENCIA</b-nav-item>
+        <b-nav-item href="#" class="item glitch" @click="animation" data-text="
+EDUCACIÓN">EDUCACIÓN</b-nav-item>
+        <b-nav-item href="#" class="item glitch" @click="animation" data-text="
+HABILIDADES">HABILIDADES</b-nav-item>
+        <b-nav-item href="#" class="item glitch" @click="animation" data-text="
+IDIOMAS">IDIOMAS</b-nav-item>
+        <b-nav-item href="#" class="item glitch" @click="animation" data-text="
+CONTACTO">CONTACTO</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
