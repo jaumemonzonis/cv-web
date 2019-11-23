@@ -135,4 +135,11 @@ export default {
     color: black;
   }
 }
+
+
+.glitch {
+  &:hover {
+    &::before {
+   @include glitchPosition(10px,10px);
+}
 </style>

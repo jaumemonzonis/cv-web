@@ -13,13 +13,12 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Experiencia from "./components/Experiencia";
 
-
 export default {
   components: {
     Home,
     Navbar,
     About,
-    Experiencia,
+    Experiencia
   }
 };
 </script>
@@ -48,46 +47,52 @@ body {
 
 //glitch effect
 
-@mixin glitchCopy { 
-		content: attr(data-text);
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+@mixin glitchCopy {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin glitchPosition($top, $left) {
+  top: $top;
+  left: $left;
 }
 
 .glitch {
-  	letter-spacing: .1em;
-  
-&:hover {
-	position: relative;
-	animation: glitch-skew 1s infinite linear alternate-reverse;
-	
-	&::before{
-		@include glitchCopy;
-		left: 2px;
-		text-shadow: -2px 0 #48ff00;
+  letter-spacing: 0.1em;
 
-		clip: rect(44px, 450px, 56px, 0);
-		animation: glitch-anim 5s infinite linear alternate-reverse;
-	}
-	
-	&::after {
-		@include glitchCopy;
-		left: -2px;
-		text-shadow: -2px 0 #48ff00, 2px 2px #ff00c1;
-		animation: glitch-anim2 1s infinite linear alternate-reverse;
-	}
-}
+  &:hover {
+    position: relative;
+    animation: glitch-skew 1s infinite linear alternate-reverse;
+
+    &::before {
+      @include glitchCopy;
+      @include glitchPosition(0px,2px);
+      //left: 2px;
+      text-shadow: -2px 0 #48ff00;
+
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+
+    &::after {
+      @include glitchCopy;
+       @include glitchPosition(0px,-2px);
+      //left: -2px;
+      text-shadow: -2px 0 #48ff00, 2px 2px #ff00c1;
+      animation: glitch-anim2 1s infinite linear alternate-reverse;
+    }
+  }
 }
 
 @keyframes glitch-anim {
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
     }
   }
 }
@@ -96,8 +101,7 @@ body {
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-			
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
     }
   }
 }
@@ -105,9 +109,7 @@ body {
   $steps: 10;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-     
     }
   }
 }
-
 </style>

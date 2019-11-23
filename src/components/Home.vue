@@ -4,7 +4,7 @@
       <b-row align-v="center" align-h="center">
         <b-col cols="6" class="blockimage">
           <div class="blockimage__img">
-            <img src="../assets/jaume_monzonis9.png" />
+            <img src="../assets/jaume_monzonis.png" />
           </div>
         </b-col>
         <b-col cols="6" class="blockpresentation">
@@ -93,7 +93,6 @@ export default {
         justify-content: flex-start;
         align-items: center;
         padding-top: 30px;
-
         .blockpresentation__name {
           text-align: center;
           font-size: 34px;
@@ -119,19 +118,16 @@ export default {
           -moz-border-radius: 50%;
           border-radius: 50%;
           &:hover {
-            $url: url("../assets/jaume_monzonis9.png");
+            $url: url("../assets/jaume_monzonis.png");
             $offset: 5px;
-
             background-image: $url;
             background-size: cover;
             background-position: center;
-
             @supports (mix-blend-mode: multiply) {
               position: relative;
               overflow: hidden;
               background-color: magenta;
               background-blend-mode: screen;
-
               &:before,
               &:after {
                 display: block;
@@ -144,16 +140,13 @@ export default {
                 background: inherit;
                 mix-blend-mode: multiply;
                 transform: scale(1);
-
                 animation: moving 2s steps(20, end) infinite;
               }
-
               &:before {
                 background-color: yellow;
                 background-blend-mode: screen;
                 transform-origin: top left;
               }
-
               &:after {
                 background-color: cyan;
                 background-blend-mode: screen;
@@ -162,7 +155,7 @@ export default {
             }
           }
           img {
-             border: solid 3px #dfdfdf;
+        
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           border-radius: 50%;
@@ -183,13 +176,11 @@ export default {
     }
   }
 }
-
 [class$="-effect"] img {
   vertical-align: top !important;
   margin: 0 !important;
   opacity: 0 !important;
 }
-
 @keyframes cursorBlink {
   49% {
     background-color: #fff;
