@@ -3,16 +3,36 @@
     <b-navbar-toggle target="nav-collapse" class="custom-toggler"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class>
-        <b-nav-item href="/#inicio" class="item glitch" @click="animation" data-text="
-INICIO">INICIO</b-nav-item>
-        <b-nav-item href="/#sobremi" class="item glitch" @click="animation" data-text="
-SOBRE MI">SOBRE MI</b-nav-item>
-        <b-nav-item href="/#experiencia" class="item glitch" @click="animation" data-text="
-EXPERIENCIA">EXPERIENCIA</b-nav-item>
+        <b-nav-item
+          href="/#inicio"
+          class="item glitch"
+          @click="animation"
+          data-text="
+INICIO"
+        >INICIO</b-nav-item>
+        <b-nav-item
+          href="/#sobremi"
+          class="item glitch"
+          @click="animation"
+          data-text="
+SOBRE MI"
+        >SOBRE MI</b-nav-item>
+        <b-nav-item
+          href="/#experiencia"
+          class="item glitch"
+          @click="animation"
+          data-text="
+EXPERIENCIA"
+        >EXPERIENCIA</b-nav-item>
         <b-nav-item href="#" class="item glitch" @click="animation" data-text="
 EDUCACIÓN">EDUCACIÓN</b-nav-item>
-        <b-nav-item href="#" class="item glitch" @click="animation" data-text="
-HABILIDADES">HABILIDADES</b-nav-item>
+        <b-nav-item
+          href="#"
+          class="item glitch"
+          @click="animation"
+          data-text="
+HABILIDADES"
+        >HABILIDADES</b-nav-item>
         <b-nav-item href="#" class="item glitch" @click="animation" data-text="
 IDIOMAS">IDIOMAS</b-nav-item>
         <b-nav-item href="#" class="item glitch" @click="animation" data-text="
@@ -50,13 +70,14 @@ export default {
         if (obj_act_top > obj_top) {
           if (obj_act_top >= home.height()) {
             item.addClass("item-black");
-          }  
-          } if (obj_act_top < obj_top) { 
-            if (obj_top < home.height()) {
-              item.removeClass("item-black");
-            }
+          }
         }
-    
+        if (obj_act_top < obj_top) {
+          if (obj_top < home.height()) {
+            item.removeClass("item-black");
+          }
+        }
+
         obj_top = obj_act_top; //almacenar scroll top anterior
       });
     },
@@ -136,10 +157,19 @@ export default {
   }
 }
 
+@mixin glitchPosition($top, $left) {
+  top: $top;
+  left: $left;
+}
 
 .glitch {
   &:hover {
     &::before {
-   @include glitchPosition(10px,10px);
+      @include glitchPosition(10px, 10px);
+    }
+    &::after {
+      @include glitchPosition(10px, 10px);
+    }
+  }
 }
 </style>
