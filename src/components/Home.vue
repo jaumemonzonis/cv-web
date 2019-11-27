@@ -66,8 +66,6 @@ export default {
       }
     }
   },
-  created() {
-    setTimeout(this.typeText, this.newTextDelay + 200);
   }
 };
 </script>
