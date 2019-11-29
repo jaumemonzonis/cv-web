@@ -4,6 +4,7 @@
     <Home></Home>
     <About></About>
     <Experiencia></Experiencia>
+    <div class="loader"></div>
   </div>
 </template>
 
@@ -13,14 +14,32 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Experiencia from "./components/Experiencia";
 
+
 export default {
   components: {
     Home,
     Navbar,
     About,
     Experiencia
+  },
+  methods: {  
+     onWindowLoad() {
+         $('div.loader').fadeOut();
+
+
+        },
+
+  },
+  created() {
+   
+    window.addEventListener("load", this.onWindowLoad);
   }
+
+  
 };
+
+ 
+
 </script>
 
 <style lang="scss">
@@ -75,7 +94,7 @@ body {
       text-shadow: -2px 0 #48ff00;
 
       clip: rect(44px, 450px, 56px, 0);
-      animation: glitch-anim 5s infinite linear alternate-reverse;
+      animation: glitch-anim 3s infinite linear alternate-reverse;
     }
 
     &::after {
@@ -86,6 +105,17 @@ body {
       animation: glitch-anim2 1s infinite linear alternate-reverse;
     }
   }
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+  background: url("./assets/jaume_monzonis.png") 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
 }
 
 @keyframes glitch-anim {

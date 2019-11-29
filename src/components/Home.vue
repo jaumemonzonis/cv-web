@@ -2,22 +2,33 @@
   <div class="home" id="#inicio">
     <b-container>
       <b-row align-v="center" align-h="center">
-        <b-col cols="6" class="blockimage">
+        <b-col cols="7" class="blockimage">
           <div class="blockimage__img">
-            <img src="../assets/jaume_monzonis.png" />
+            <img src="../assets/jaume_monzonis.png" alt="imagen_JaumeMonzonisLazaro" />
           </div>
         </b-col>
-        <b-col cols="6" class="blockpresentation">
-          <h1 class="blockpresentation__name glitch" data-text="
-JAUME MONZONIS LÁZARO">JAUME MONZONIS LÁZARO</h1>
-          <h1>
-            <span class="blockpresentation__job">{{ typeValue }}</span>
-            <span class="blockpresentation__cursor" :class="{'typing': typeStatus}">&nbsp;</span>
-          </h1>
+        <b-col cols="5" class="blockpresentation">
+          <b-col cols="10">
+            <h1
+              class="blockpresentation__name glitch"
+              data-text="
+JAUME MONZONIS LÁZARO"
+            >JAUME MONZONIS LÁZARO</h1>
+            <h1>
+              <span class="blockpresentation__job">{{ typeValue }}</span>
+              <span class="blockpresentation__cursor" :class="{'typing': typeStatus}">&nbsp;</span>
+            </h1>
+          </b-col>
+          <b-col cols="2">
+            <a href="#sobremi" class="blockpresentation__arrowdown">
+              <img src="../assets/arrowdown.png" alt="imagen_JaumeMonzonisLazaro" />
+            </a>
+          </b-col>
         </b-col>
       </b-row>
     </b-container>
   </div>
+ 
 </template>
 
 <script>
@@ -64,8 +75,14 @@ export default {
           this.typeArrayIndex = 0;
         setTimeout(this.typeText, this.typingSpeed + 1000);
       }
-    }
+   
+    },
+   
+
   },
+  created() {
+    setTimeout(this.typeText, this.newTextDelay + 200);
+    
   }
 };
 </script>
@@ -80,17 +97,34 @@ export default {
     .row {
       height: 100%;
       flex-direction: column;
-      .col-6:first-child {
+      .blockimage {
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        padding-bottom: 30px;
       }
       .blockpresentation {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 30px;
+        padding-right: 0px;
+        padding-left: 0px;
+
+ @media only screen and (min-width: 768px)  {
+   min-width: 600px;
+}
+
+
+        .col-10,
+        .col-2 {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          padding-right: 0px;
+          padding-left: 0px;
+        }
         .blockpresentation__name {
           text-align: center;
           font-size: 34px;
@@ -153,13 +187,12 @@ export default {
             }
           }
           img {
-        
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          border-radius: 50%;
-          -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
-          -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
+            -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.52);
           }
         }
       }
