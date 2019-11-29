@@ -4,7 +4,7 @@
     <Home></Home>
     <About></About>
     <Experiencia></Experiencia>
-    <div class="loader"></div>
+    <div class="loader" id="loader"></div>
   </div>
 </template>
 
@@ -24,7 +24,11 @@ export default {
   },
   methods: {  
      onWindowLoad() {
-         $('div.loader').fadeOut();
+         var s = document.getElementById('loader').style;
+s.opacity = 1;
+(function fade(){
+  (s.opacity-=.1)<0?s.display="none":setTimeout(fade,100)
+  })();
 
 
         },
